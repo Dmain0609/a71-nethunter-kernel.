@@ -1,0 +1,14 @@
+name: Recon
+on: workflow_dispatch
+jobs:
+  recon:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone kernel source
+        run: git clone --depth 1 -b 16.0 https://git.evolution-x.org/Evolution-X-Devices/kernel_samsung_a71.git src
+      - name: Show info
+        run: |
+          cd src
+          head -5 Makefile
+          ls arch/arm64/configs
+          ls arch/arm64/configs/vendor 2>/dev/null | grep -i a71
